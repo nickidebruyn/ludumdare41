@@ -1,0 +1,13 @@
+
+1. Magic Motocross DJ
+	- Ride motorcross bikes with tapping to the rhythm of the song.
+
+2. BlackJack Racing Legends
+	- Race cars by playing black jack
+
+3. Tower defence third person shooter.
+	- Place towers and shoot bad guys
+
+4. Escape the maze programming
+
+5. Castle royal card game
