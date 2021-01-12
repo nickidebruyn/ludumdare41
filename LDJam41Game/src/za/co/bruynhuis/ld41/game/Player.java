@@ -65,9 +65,8 @@ public class Player extends BasicPlayer {
         playerNode.attachChild(model);
 
         tempNode = new Node();
-
+        
         waypoints = ((Game) game).getCopyOfWaypoints();
-
         playerNode.setLocalTranslation(waypoints.peek());
         playerNode.lookAt(waypoints.get(waypoints.size() - 2), Vector3f.UNIT_Y);
 

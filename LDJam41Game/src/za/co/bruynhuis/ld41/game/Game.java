@@ -8,6 +8,7 @@ package za.co.bruynhuis.ld41.game;
 import com.bruynhuis.galago.app.BaseApplication;
 import com.bruynhuis.galago.games.basic.BasicGame;
 import com.bruynhuis.galago.games.basic.BasicPlayer;
+import com.jme3.light.DirectionalLight;
 import com.jme3.light.PointLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
@@ -64,8 +65,10 @@ public class Game extends BasicGame {
 
 //        light = new PointLight(new Vector3f(0, 50, 0));
 //        rootNode.addLight(light);
-
-        initLight(ColorRGBA.White, sunDirection);
+        sunLight = new DirectionalLight();
+        sunLight.setColor(ColorRGBA.White);
+        sunLight.setDirection(sunDirection.normalizeLocal());
+        levelNode.addLight(sunLight);
 
         dlsf = new DirectionalLightShadowRenderer(baseApplication.getAssetManager(), 512, 1);
         dlsf.setLight(sunLight);
@@ -79,7 +82,6 @@ public class Game extends BasicGame {
 //                log("Spatial: " + spatial.getName());
 
                 if (spatial.getUserData(TYPE) != null && spatial.getUserData(TYPE).equals(MARKER)) {
-                    
 
 //                    log("Waypoint found: " + spatial.getWorldTranslation());
                     waypoints.push(spatial.getWorldTranslation().clone());
@@ -104,7 +106,7 @@ public class Game extends BasicGame {
         baseApplication.getViewPort().removeProcessor(dlsf);
         super.close();
     }
-    
+
     public boolean isGameOver() {
         return winner != null;
     }
